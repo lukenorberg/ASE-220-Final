@@ -6,4 +6,5 @@ ASE 220 - Spring 2024
 Luke Norberg
 * 
 Anna Dinius
-* 
+* implemented GET request to display recipe cards on index.html
+* implemented pagination
