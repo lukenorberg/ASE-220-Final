@@ -5,6 +5,18 @@ body {
 }
 
 /***************INDEX PAGE STYLES***************/
+#filter{
+  display: flex;
+  align-items: center;
+}
+#filter p{
+  display: flex;
+  align-items: center;
+  margin: auto 10px;
+}
+.hide{
+  display: none;
+}
 .card {
   width: calc(33.33% - 20px);
   height: auto;
@@ -15,13 +27,16 @@ body {
   text-align: center;
 }
 .card img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
 }
 .img-div{
   height: 300px;
   overflow: hidden;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .h1-div{
 	height: 96px;

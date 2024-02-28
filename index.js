@@ -1,5 +1,5 @@
-
-  let apiUrl = "http://jsonblob.com/api/jsonBlob/1212147388440764416";
+$(document).ready(function() {
+  let apiUrl = "https://jsonblob.com/api/jsonBlob/1212147388440764416";
 
   var offset = 0;
   var rpp = 9;
@@ -14,12 +14,12 @@
     card.setAttribute("data-id", recipes[index].id);
     card.innerHTML = fillCardInfo(index, recipes);
     document.getElementById("content").append(card);
-    if (offset + rpp > recipes.length) {
-      loadMoreButton.hidden = true;
+	if (offset + rpp > recipes.length) {
+	  $("#load-more").addClass("hide");
     }
   }
   
-// Generating the card information (displaying card data)
+// Generating card info (displaying card data)
 
   function fillCardInfo(index, recipes) {
     return `
@@ -53,6 +53,8 @@
       ) {
         createCard(i, recipes);
       }
+    }).fail(function() {
+      console.log("Error loading data from the API.");
     });
   };
   
@@ -60,12 +62,49 @@
 
 // "Load more" button
 
-  let loadMoreButton = document.createElement("button");
-  loadMoreButton.classList.add("btn", "load-btn");
-  loadMoreButton.classList.add("btn-primary");
-  loadMoreButton.innerText = "Load more";
-  loadMoreButton.addEventListener("click", function() {
+  $('#load-more').on("click", function() {
     offset += 9;
     displayCards();
   });
-  document.querySelector("#loadmore").append(loadMoreButton);
+  
+// Toggling filter dropdown menu
+
+  $('.dropdown-toggle').on("click", function() {
+    $(this).next('.dropdown-menu').toggle();
+  });
+  
+// Filter functionality
+  
+  $('[data-id="all"]').prop("disabled", true);
+  
+  function filter(category) {
+	$.get(apiUrl, function(data) {
+	  recipes = data;
+	  for(let i = 0; i < recipes.length; i++){
+	    if (recipes[i].category == category){
+	      createCard(i, recipes);
+	    }
+	  }
+	});
+  }
+  
+  $('.dropdown-item').on("click", function() {
+	let category = $(this).text();
+	$("#content").empty();
+    if (category != "All"){
+	  filter(category);
+	}
+	else{
+	  offset = 0;
+	  $("#load-more").removeClass("hide");
+	  displayCards();
+	}
+	
+	let dropdown = $(this).closest('.dropdown').find('.dropdown-menu');
+	dropdown.toggle(); // Hiding dropdown menu
+
+	$('#dropdownMenu2').text(category);
+	$('.dropdown-item').prop("disabled", false);
+	$(this).prop("disabled", true);
+  });
+});
