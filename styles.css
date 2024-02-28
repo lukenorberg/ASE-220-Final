@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap");
+body {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+}
+
+/***************INDEX PAGE STYLES***************/
+.card {
+  width: calc(33.33% - 20px);
+  height: auto;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 10px;
+  display: inline-block;
+  text-align: center;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  /*border-radius: 10px;*/
+  padding-bottom: 10px;
+}
+.img-div{
+  height: 300px;
+  overflow: hidden;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.card h1{
+  color: #000000;
+  height: 96px;
+  align-items: center;
+}
+.author{
+  color: #3b3b3b;
+  padding-bottom: 10px;
+}
+.btns{
+  justify-content: space-between;
+}
+#btn-div{
+  margin: 10px auto 10px;
+  display: flex;
+  justify-content: center;
+}
+#btn-create{
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #008080;
+  border: #008080;
+}
+#input-area{
+  padding: 10px 10px 0 10px;
+}
+#btn-save{
+  background-color:darksalmon;
+  border: none;
+  font-size: 18px;
+}
+.textarea{
+	height: 1;
+}
+.btn-delete{
+  font-size: 16px;
+  padding: 8px 18px;
+  float: right;
+}
+.load-btn {
+  background-color:darksalmon;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+.load-btn:hover {
+  background-color: gainsboro;
+}
+.modal-footer .btn-primary{
+	background-color: #008080;
+	border: #008080;
+}
+
+
+/***************PET PAGES STYLES***************/
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+.row {
+  display: flex;
+  padding: 1rem;
+}
+.col {
+  width: 60%;
+  padding-left: 3%;
+  padding-right: 3%;
+  align-items: center;
+}
+.col h3,
+h5 {
+  margin: 5%;
+  text-align: center;
+}
+.colpic {
+  width: 40%;
+}
+.pic {
+  width: 100%;
+  margin-top: 20%;
+}
+a {
+  color: darksalmon;
+  text-decoration: none;
+}
+.centerText {
+  text-align: center;
+}
+.centerContent {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col {
+    width: 100%;
+  }
+
+  .colpic {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pic {
+    width: 18rem;
+  }
+}
