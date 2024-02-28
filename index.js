@@ -27,7 +27,9 @@
 	  <div class="img-div">
 	    <img src="${recipes[index].image}">
 	  </div>
-      <h1>${recipes[index].name}</h1>
+      <div class="h1-div">
+	    <h1>${recipes[index].name}</h1>
+	  </div>
       <p class="author">Author: <span>${recipes[index].author}</span></p>
     </a>
     <div class="d-flex btns" id="btn-box-${recipes[index].id}">
@@ -55,7 +57,6 @@
   };
   
   displayCards();
-
 
 // "Load more" button
 
