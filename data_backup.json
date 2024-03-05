@@ -1,7 +1,8 @@
 [
   {
+    "id": 1,
     "name": "Classic Spaghetti Bolognese",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Julia",
     "image": "https://sanremo.com.au/content/uploads/2017/05/Resized_San-Remo_Core-Range_13975_Spaghetti-Bolognese-900x600.jpg",
     "prep_time": "15 minutes",
@@ -28,8 +29,9 @@
     ]
   },
   {
+    "id": 2,
     "name": "Grilled Lemon Herb Chicken",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Michael",
     "image": "https://www.feastingathome.com/wp-content/uploads/2021/06/Grilled-lemon-Herb-Chicken-17.jpg",
     "prep_time": "10 minutes",
@@ -53,8 +55,9 @@
     ]
   },
   {
+    "id": 3,
     "name": "Oatmeal Raisin Cookies",
-    "category": "dessert",
+    "category": "Desserts",
     "author": "Healthy Eats Helen",
     "image": "https://www.simplyrecipes.com/thmb/2g1IOS6TYdG_bmyg0hyf0b6RKGY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Oatmeal-Raisin-Cookies-LEAD-15-2251dafb1a554aafaedf42e797bf2fd0.jpg",
     "prep_time": "15 minutes",
@@ -87,8 +90,9 @@
     ]
   },
   {
+    "id": 4,
     "name": "Garlic Parmesan Roasted Brussels Sprouts",
-    "category": "Side Dish",
+    "category": "Sides",
     "author": "Chef John Doe",
     "image": "https://www.eatwell101.com/wp-content/uploads/2020/09/Parmesan-Roasted-Brussels-Sprouts-1.jpg",
     "prep_time": "15 minutes",
@@ -110,8 +114,9 @@
     ]
   },
   {
+    "id": 5,
     "name": "Vegetarian Chickpea Curry",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Alex",
     "image": "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2024/01/Chickpea-Curry-main.jpg",
     "prep_time": "20 minutes",
@@ -139,8 +144,9 @@
     ]
   },
   {
+    "id": 6,
     "name": "Baked Salmon with Lemon Dill Sauce",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Sophia",
     "image": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2014/3/28/1/RX-DAISY_Grilled-salmon_s4x3.jpg.rend.hgtvcom.616.462.suffix/1396370205937.jpeg",
     "prep_time": "10 minutes",
@@ -165,8 +171,9 @@
     ]
   },
   {
+    "id": 7,
     "name": "Banana Bread",
-    "category": "dessert",
+    "category": "Desserts",
     "author": "Grandma Grace",
     "image": "https://www.simplyrecipes.com/thmb/tR-5eHAZ3lgNR6Yvu3yxdHMNpk8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Easy-Banana-Bread-LEAD-2-2-63dd39af009945d58f5bf4c2ae8d6070.jpg",
     "prep_time": "15 minutes",
@@ -195,8 +202,9 @@
     ]
   },
   {
+    "id": 8,
     "name": "Lemon Herb Quinoa Salad",
-    "category": "Side Dish",
+    "category": "Sides",
     "author": "Chef Jane Smith",
     "image": "https://img.sndimg.com/food/image/upload/q_92,fl_progressive,w_1200,c_scale/v1/img/recipes/65/13/1/tRUzOjMOQdWrIpxVSLTG_139%20lemon%20herb%20quinoa%20fooddotcom.jpg",
     "prep_time": "10 minutes",
@@ -217,8 +225,9 @@
     ]
   },
   {
+    "id": 9,
     "name": "Mushroom and Spinach Stuffed Chicken",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Lisa",
     "image": "https://thecozyapron.com/wp-content/uploads/2012/06/stuffed-chicken_05-20-12_4_ca.jpg",
     "prep_time": "15 minutes",
@@ -245,8 +254,9 @@
     ]
   },
   {
+    "id": 10,
     "name": "Mushroom and Spinach Quesadillas",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Carlos",
     "image": "https://www.budgetbytes.com/wp-content/uploads/2022/02/Spinach-and-Mushroom-Quesadillas-stack.jpg",
     "prep_time": "15 minutes",
@@ -272,8 +282,9 @@
     ]
   },
   {
+    "id": 11,
     "name": "Pasta Aglio e Olio",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Marco",
     "image": "https://chefjackovens.com/wp-content/uploads/2020/11/My-Post-56-1.jpg",
     "prep_time": "10 minutes",
@@ -296,8 +307,9 @@
     ]
   },
   {
+    "id": 12,
     "name": "Teriyaki Salmon Bowl",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Hiro",
     "image": "https://www.eatwell101.com/wp-content/uploads/2021/02/Teriyaki-Salmon-Sushi-Bowl-recipe-4.jpg",
     "prep_time": "10 minutes",
@@ -323,8 +335,9 @@
     ]
   },
   {
+    "id": 13,
     "name": "Roasted Sweet Potato Wedges",
-    "category": "Side Dish",
+    "category": "Sides",
     "author": "Chef Alex Johnson",
     "image": "https://i0.wp.com/www.paleonewbie.com/wp-content/uploads/2014/11/paleonewbie-baked-spicy-sweet-potato-fries-1266x850.jpg?fit=1266%2C850&ssl=1",
     "prep_time": "10 minutes",
@@ -345,8 +358,9 @@
     ]
   },
   {
+    "id": 14,
     "name": "Creamy Garlic Mashed Cauliflower",
-    "category": "Side Dish",
+    "category": "Sides",
     "author": "Chef Emily Davis",
     "image": "https://www.instrupix.com/wp-content/uploads/2021/05/keto-low-carb-side-dish-recipes-for-dinner-mashed-cauliflower.jpg",
     "prep_time": "15 minutes",
@@ -367,8 +381,9 @@
     ]
   },
   {
+    "id": 15,
     "name": "Chocolate Chip Cookies",
-    "category": "dessert",
+    "category": "Desserts",
     "author": "Baker Betty",
     "image": "https://www.budgetbytes.com/wp-content/uploads/2022/12/Chocolate-Chip-Cookies-close-2.jpg",
     "prep_time": "15 minutes",
@@ -399,8 +414,9 @@
     ]
   },
   {
+    "id": 16,
     "name": "Vegetarian Quinoa Stuffed Bell Peppers",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Olivia",
     "image": "https://www.eatyourselfskinny.com/wp-content/uploads/2012/07/161.jpg",
     "prep_time": "20 minutes",
@@ -428,8 +444,9 @@
     ]
   },
   {
+    "id": 17,
     "name": "Chicken Alfredo Pasta",
-    "category": "entree",
+    "category": "Entrees",
     "author": "Chef Maria",
     "image": "https://hips.hearstapps.com/hmg-prod/images/chicken-alfredo-index-64ee1026c82a9.jpg?crop=0.9994472084024323xw:1xh;center,top&resize=1200:*",
     "prep_time": "15 minutes",
@@ -455,8 +472,9 @@
     ]
   },
   {
+    "id": 18,
     "name": "Strawberry Shortcake",
-    "category": "dessert",
+    "category": "Desserts",
     "author": "Chef Carla",
     "image": "https://iambaker.net/wp-content/uploads/2023/05/strawberry-shortcake-cake-1.jpg",
     "prep_time": "20 minutes",
@@ -481,8 +499,9 @@
     ]
   },
   {
+    "id": 19,
     "name": "Caprese Skewers",
-    "category": "Side Dish",
+    "category": "Sides",
     "author": "Chef Michael Rodriguez",
     "image": "https://cdn.loveandlemons.com/wp-content/uploads/2021/08/caprese-skewers.jpg",
     "prep_time": "10 minutes",
@@ -501,8 +520,9 @@
     ]
   },
   {
+    "id": 20,
     "name": "Vanilla Pudding Parfait",
-    "category": "dessert",
+    "category": "Desserts",
     "author": "Pastry Chef Paul",
     "image": "https://www.onceuponachef.com/images/2013/06/banana-pudding-parfaits-1-1-760x552.jpg",
     "prep_time": "10 minutes",
