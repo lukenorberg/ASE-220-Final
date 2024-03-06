@@ -6,7 +6,7 @@ ASE 220 - Spring 2024
 Luke Norberg
 * added PUT requests for Create, Update, and Delete requests.
 * implemented details page and the get request
-* modified filtered to work with pagination
+* modified filter functionality to work with pagination
 * filmed presentation
 
 Anna Dinius
@@ -14,3 +14,4 @@ Anna Dinius
 * implemented GET request to display recipe cards on index.html
 * implemented pagination
 * implemented working filter functionality to sort results
+* wrote documentation
