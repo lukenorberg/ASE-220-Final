@@ -60,7 +60,7 @@ $(document).ready(function() {
         <img src="${recipes[index].image}">
       </div>
       <div class="h1-div">
-        <h1 class="text-truncate">${recipes[index].name}</h1>
+        <h1>${recipes[index].name}</h1>
       </div>
       <p class="author">Author: <span>${recipes[index].author}</span></p>
     </a>
