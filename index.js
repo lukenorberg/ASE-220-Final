@@ -129,7 +129,8 @@ $(document).ready(function() {
     $(this).prop("disabled", true);
   });
 
-  // Delete logic
+  // Delete button logic
+  
   $(document).on("click", ".btn-delete", function() {
     let id = parseInt($(this).attr("data-id"));
     let index = getIndex(id, fullRecipes);
@@ -150,7 +151,7 @@ $(document).ready(function() {
     });
   });
 
-  // Update logic
+  // Update (Edit) button logic
 
   $(document).on("click", ".update-btn", function() {
     clearForm();
@@ -200,7 +201,7 @@ $(document).ready(function() {
       recipe.steps.push($(".step-input")[i].value);
     }
     for (let i in inputKeys) {
-      recipe[inputKeys[i]] = $(`[name=${inputKeys[i]}]`)[0].value;
+      recipe[inputKeys[i]] += $(`[name=${inputKeys[i]}]`)[0].value;
     }
     if (action === "update") {
       let index = getIndex(recipe.id, fullRecipes);
@@ -227,7 +228,7 @@ $(document).ready(function() {
     });
   });
 
-  // Create logic
+  // Create button logic
   $(document).on("click", "#create-btn", function() {
     clearForm();
     $("#btn-change").attr("data-action", "create");

@@ -12,31 +12,30 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light mb-2 salmon">
+      <div class="container-fluid">
+        <a class="navbar-brand text-light" href="./index.html"><h1>DishDelish</h1></a>
+      </div>
+    </nav>
     <div class="container">
       <div class="row">
         <div class="colpic">
-          <img
-            class="pic"
-            src=""
-            alt="Pet photo"
-            id="photo"
-          /><!-- JS below fills in src attribute based on pet id-->
+          <img class="pic" src="" alt="Food dish photo" id="photo" />
         </div>
         <div class="col">
-          <h5><a href="index.html">Back to Index</a></h5>
-          <h3 id="name"></h3>
-          <h3 id="author"></h3>
+          <h5><a href="index.html" class="btn btn-primary turqoise">Back to Index</a></h5>
+          <h2 id="name"></h2>
+          <h3>Author: <span id="author"></span></h3>
             <div class="d-flex justify-content-center flex-column">
-              <div class="fw-bold text-center">Category: </div><div id="category" class="text-center"></div>
-              <div class="fw-bold text-center">Prep Time: </div><div id="prep_time" class="text-center"></div>
-              <div class="fw-bold text-center">Cook Time: </div><div id="cook_time" class="text-center"></div>
-              <div class="fw-bold text-center">Total Time: </div><div id="total_time" class="text-center"></div>
-              <div class="fw-bold text-center">Servings: </div><div id="servings" class="text-center"></div>
+              <div class="text-center"><strong>Category: </strong><span id="category" class="text-center"></span></div>
+              <div class="text-center"><strong>Prep Time: </strong><span id="prep_time" class="text-center"></span></div>
+              <div class="text-center"><strong>Cook Time: </strong><span id="cook_time" class="text-center"></span></div>
+              <div class="text-center"><strong>Total Time: </strong><span id="total_time" class="text-center"></span></div>
+              <div class="text-center"><strong>Servings: </strong><span id="servings" class="text-center"></span></div>
             </div>
           <h3>Ingredients</h3>
           <div class="centerContent">
-            <ul id="ingredients">
-            </ul>
+            <ul id="ingredients"></ul>
           </div>
           <h3>Steps</h3>
           <div class="centerContent">
@@ -60,20 +59,19 @@
       return -1;
     }
 
-	  
     $.get(apiUrl, function(data) {
       let recipe = data[getIndex(recipeId, data)];
       $('#photo').attr('src', recipe.image)
       for (let key in recipe) {
-          if (!Array.isArray(recipe[key])) {
-            $(`#${key}`).text(recipe[key])
-          }
+        if (!Array.isArray(recipe[key])) {
+          $(`#${key}`).text(recipe[key])
         }
+      }
       for (let i in recipe.ingredients) {
-          $('#ingredients').append(`<li>${recipe.ingredients[i]}</li>`)
+        $('#ingredients').append(`<li>${recipe.ingredients[i]}</li>`)
       }
       for (let i in recipe.steps) {
-          $('#steps').append(`<li>${recipe.steps[i]}</li>`)
+        $('#steps').append(`<li>${recipe.steps[i]}</li>`)
       }
     }).fail(function() {
       console.log("Error loading data from the API.");

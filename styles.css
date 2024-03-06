@@ -3,6 +3,31 @@ body {
   font-family: "DM Sans", sans-serif;
   font-size: 16px;
 }
+a {
+  text-decoration: none;
+}
+nav div a h1{
+  color: #000000;
+  font-weight: bold;
+}
+.turqoise{
+  background-color: #008080;
+  border: #008080;
+}
+.turqoise:hover{
+  background-color: #3eb489;
+  border: #3eb489;
+}
+.salmon{
+  background-color: #fea993;
+  border: #fea993;
+}
+a h1{
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
 
 /***************INDEX PAGE STYLES***************/
 #filter{
@@ -39,10 +64,10 @@ body {
   align-items: center;
 }
 .h1-div{
-	height: 96px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  height: 96px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .btn-container {
   display: flex;
@@ -99,12 +124,12 @@ body {
   background-color: gainsboro;
 }
 .modal-footer .btn-primary{
-	background-color: #008080;
-	border: #008080;
+  background-color: #008080;
+  border: #008080;
 }
 
 
-/***************PET PAGES STYLES***************/
+/***************DETAIL PAGE STYLES***************/
 
 .container {
   margin-left: auto;
@@ -120,8 +145,7 @@ body {
   padding-right: 3%;
   align-items: center;
 }
-.col h3,
-h5 {
+.col h3, h2 {
   margin: 5%;
   text-align: center;
 }
@@ -131,10 +155,6 @@ h5 {
 .pic {
   width: 100%;
   margin-top: 20%;
-}
-a {
-  color: darksalmon;
-  text-decoration: none;
 }
 .centerText {
   text-align: center;
@@ -146,21 +166,18 @@ a {
 
 @media (max-width: 600px) {
   .row {
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
   }
-
   .col {
-    width: 100%;
+  width: 100%;
   }
-
   .colpic {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   }
-
   .pic {
-    width: 18rem;
+  width: 18rem;
   }
 }
