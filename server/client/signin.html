@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+    <body>
+        <main>
+            <div class="d-flex ms-3">
+                <div
+                    class="h-100 d-flex align-items-center justify-content-center"
+                >
+                    <form
+                        class="position-absolute top-50 start-50 translate-middle card"
+                    >
+                        <div class="form-group m-3">
+                            <label for="email">Email address</label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                aria-describedby="emailHelp"
+                                placeholder="Enter email"
+                            />
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="password">Password</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                placeholder="Password"
+                            />
+                        </div>
+                        <button
+                            id="signin"
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Sign In
+                        </button>
+                        <div>
+                            Don't have an account?
+                            <a href="/signup.html">Sign up here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="./js/components.js"></script>
+        <script src="./js/signin.js"></script>
+    </body>
+</html>
