@@ -9,7 +9,7 @@ function response(code, success, data) {
 }
 
 function validRecipeFields(recipe) {
-    const reqFields = ["name", "category", "author", "author_id", "prep_time_hrs", "prep_time_mins", "cook_time_hrs", "cook_time_mins", "servings", "ingredients", "steps"];
+    const reqFields = ["name", "category", "author", "prep_time_hours", "prep_time_minutes", "cook_time_hours", "cook_time_minutes", "servings", "ingredients", "steps", "author_id"];
     for (let i = 0; i < reqFields.length; i++) {
         const reqField = reqFields[i];
         if (!recipe[reqField]) {

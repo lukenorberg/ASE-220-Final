@@ -164,12 +164,12 @@ var inputKeys = [
     "name",
     "category",
     "author",
-    "cook_time_minutes",
-    "cook_time_hours",
-    "image",
-    "prep_time_minutes",
     "prep_time_hours",
+    "prep_time_minutes",
+    "cook_time_hours",
+    "cook_time_minutes",
     "servings",
+    "image",
     "total_time",
 ];
 
@@ -259,12 +259,12 @@ $(document).on("click", "#save-changes-btn", function() {
             recipe.steps.push($(".step-input")[i].value);
         }
         for (let i in inputKeys) {
-            recipe[inputKeys[i]] = $(`[name=${inputKeys[i]}][0]`).val();
+            recipe[inputKeys[i]] = $(`[name="${inputKeys[i]}"]`).val();
         }
 
         const token = localStorage.getItem("token")
         recipe.author_id = localStorage.getItem("id");
-
+		
         $.ajax({
             type: action === "update" ? "PUT" : "POST",
             url: apiUrl + (action === "update" ? `/${recipeId}` : ""),
@@ -305,8 +305,6 @@ $(document).on("click", "#save-changes-btn", function() {
             },
             error: function(errMsg) {
                 alert(errMsg);
-				console.log(errMsg);
-				console.log(errMsg.data);
             },
         });
         $("#modal-update").modal("hide");
