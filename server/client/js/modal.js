@@ -138,7 +138,12 @@ $(document).on("click", "#editBtn", function() {
                 return false;
             }
         });
-        
+		
+		prepHrs = parseInt(recipe.prep_time_hours);
+		prepMins = parseInt(recipe.prep_time_minutes);
+		cookHrs = parseInt(recipe.cook_time_hours);
+		cookMins = parseInt(recipe.cook_time_minutes);
+		
 		$("#prep_time_hrs").val(recipe.prep_time_hours);
         $("#prep_time_mins").val(recipe.prep_time_minutes);
         $("#cook_time_hrs").val(recipe.cook_time_hours);
