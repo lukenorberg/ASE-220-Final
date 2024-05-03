@@ -1,80 +1,48 @@
 const express = require("express");
 const getPut = express();
-const path = require("path");
-const fs = require("fs");
-const { getRecipeIndexById, decodeJwt } = require("../utils/functions.js");
+const { decodeJwt } = require("../utils/functions.js");
+const { getRecipes, getRecipeById, updateRecipe } = require("../utils/mongodb.js");
+const { ObjectId } = require("mongodb");
 
-const FILE = path.join(__dirname, "..", "blobs", "recipes.json");
-
-getPut.get("/recipes", function(req, res) {
+getPut.get("/recipes", async (req, res) => {
     res.setHeader("Content-Type", "application/json");
-    if (!fs.existsSync(FILE)) {
-        res.send({
-            success: false,
-            data: "Error reading file",
-        });
-        return;
-    }
-    const content = fs.readFileSync(FILE, "utf8");
-    res.send({ success: true, data: JSON.parse(content) });
+    const { code, success, data } = await getRecipes();
+    res.status(code).json({ success, data });
 });
 
-getPut.get("/recipes/:id", function(req, res) {
+getPut.get("/recipes/:id", async (req, res) => {
     res.setHeader("Content-Type", "application/json");
-    const id = parseInt(req.params.id);
-    if (!fs.existsSync(FILE)) {
-        res.send({
-            success: false,
-            data: "Error reading file",
-        });
-        return;
-    }
-    const content = fs.readFileSync(FILE, "utf8");
-    const recipes = JSON.parse(content);
-    const arrId = getRecipeIndexById(id, recipes);
-
-    if (!recipes[arrId]) {
-        res.send({
-            success: false,
-            data: "user not found",
-        });
-        return;
-    }
+    const id = req.params.id;
+    const objId = new ObjectId(id);
+    const { code, success, data } = await getRecipeById(objId);
 
     let bearerHeader = req.headers["authorization"];
     const jwtBody = decodeJwt(bearerHeader);
     let isUser = false;
-    if (jwtBody && jwtBody.fullName === recipes[arrId].author) {
+    if (data && data.author_id && jwtBody && jwtBody.id === data.author_id.toString()) {
         isUser = true;
     }
 
-    res.send({
-        success: true,
-        data: recipes[arrId],
+    res.status(code).send({
+        success,
+        data,
         isUser,
     });
 });
 
-getPut.put("/recipes/:id", function(req, res) {
+getPut.put("/recipes/:id", async (req, res) => {
     res.setHeader("Content-Type", "application/json");
+    const id = req.params.id;
+    const objId = new ObjectId(id);
+    delete req.body._id;
+    delete req.body.id;
 
-    const id = parseInt(req.params.id);
-    if (!fs.existsSync(FILE)) {
-        res.send({ success: false, message: "Error reading file" });
-        return;
-    }
-    const content = fs.readFileSync(FILE, "utf8");
-    const recipes = JSON.parse(content);
-    const arrId = getRecipeIndexById(id, recipes);
+    const { code, success, data } = await updateRecipe(req.body, objId);
 
-    for (let key of Object.keys(recipes[arrId])) {
-        if (req.body[key]) {
-            recipes[arrId][key] = req.body[key];
-        }
-    }
-
-    fs.writeFileSync(FILE, JSON.stringify(recipes, null, 2));
-    res.send({ success: true, data: recipes[arrId] });
+    res.status(code).send({
+        success,
+        data,
+    });
 });
 
 module.exports = getPut;

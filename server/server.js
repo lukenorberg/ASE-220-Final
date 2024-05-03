@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const getPut = require("./routes/getPut.js");
 const postDelete = require("./routes/postDelete.js");
 const signInSignUp = require("./routes/signInSignUp.js");
+const { connect } = require("./utils/mongodb.js")
 
 const app = express();
 const port = 3000;
@@ -15,6 +16,10 @@ app.use("/api", getPut);
 app.use("/api", postDelete);
 app.use("/api", signInSignUp);
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`);
-});
+async function start() {
+    await connect()
+    app.listen(port, () => {
+        console.log(`App listening on port ${port}`);
+    });
+}
+start();

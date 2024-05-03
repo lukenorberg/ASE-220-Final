@@ -1,112 +1,152 @@
 <!doctype html>
 <html lang="en">
-<body>
-    <main>
-        <div class="d-flex ms-3">
-            <div id="create">
-                <button id="create-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-update">
-                    Create
-                </button>
-            </div>
-            <div id="filter">
-                <p>Filter Results By: </p>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button" data-id="all">All</button>
-                        <button class="dropdown-item" type="button" data-id="entree">Entrees</button>
-                        <button class="dropdown-item" type="button" data-id="Side Dish">Sides</button>
-                        <button class="dropdown-item" type="button" data-id="dessert">Desserts</button>
-                    </div>
-                </div>
-            </div>
+	<head>
+		<script src="./js/components.js"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.js"
+			integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/dist/jwt-decode.min.js"></script>
+		<script type="module" src="./js/jwt-decode.js"></script>
+		<script type="module" src="./js/index.js"></script>
+		<script type="module" src="./js/modal.js"></script>
+	</head>
+	<body>
+		<main>
+			<div class="d-flex ms-3">
+				<div id="create">
+					
+				</div>
+				<div id="filter">
+					<p>Filter Results By: </p>
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+							<button class="dropdown-item" type="button" data-id="all">All</button>
+							<button class="dropdown-item" type="button" data-id="entree">Entrees</button>
+							<button class="dropdown-item" type="button" data-id="Side Dish">Sides</button>
+							<button class="dropdown-item" type="button" data-id="dessert">Desserts</button>
+						</div>
+					</div>
+				</div>
 
-        </div>
-        <div id="content"></div>
-        <div id="loadmore" class="btn-container">
-            <button class="btn load-btn btn-primary" id="load-more">Load More</button>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modal-update" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modify-title"></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+			</div>
+			<div id="content"></div>
+			<div id="loadmore" class="btn-container">
+				<button class="btn load-btn btn-primary" id="load-more">Load More</button>
+			</div>
+			<!-- Modal -->
+			<div class="modal fade" id="modal-update" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="modify-title"></h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
 
-                    <div class="modal-body">
-                        <div id="modify-area">
-                            <!-- prevents submissions -->
-                            <form onsubmit="return false;" id="change-form">
+						<div class="modal-body">
+							<div id="modify-area">
+								<!-- prevents submissions -->
+								<form onsubmit="return false;" id="change-form">
 
-                                <p>
-                                    <strong>Name: &nbsp;&nbsp;</strong><input type="text" class="form-control"
-                                        name="name" />
-                                </p>
-                                <p>
-                                    <strong>Author: &nbsp;&nbsp;</strong><input type="text" class="form-control"
-                                        name="author" />
-                                </p>
-                                <p>
-                                    <strong>Category: &nbsp;&nbsp;</strong>
-                                    <select name="category" id="category">
-                                        <option value="Entrees">Entrees</option>
-                                        <option value="Sides">Sides</option>
-                                        <option value="Desserts">Desserts</option>
-                                    </select>
-                                </p>
-                                <p>
-                                    <strong>Prep Time: &nbsp;&nbsp;</strong><input type="text" class="form-control"
-                                        name="prep_time" />
-                                </p>
-                                <p>
-                                    <strong>Cook Time: &nbsp;&nbsp;</strong><input type="text" class="form-control"
-                                        name="cook_time" />
-                                </p>
-                                <p>
-                                    <strong>Total Time: &nbsp;&nbsp;</strong><input type="text" class="form-control"
-                                        name="total_time" />
-                                </p>
-                                <p>
-                                    <strong>Servings: &nbsp;&nbsp;</strong>
-                                    <select name="servings" id="servings">
-                                        <!--filled in index.js-->
-                                    </select>
-                                </p>
-                                <p>
-                                    <strong>Image URL: &nbsp;&nbsp;</strong><input class="form-control" name="image" />
-                                </p>
-                                <p>
-
-                                    <strong>Ingredients: &nbsp;&nbsp;</strong>
-                                <div id="ingredients"></div>
-                                <button id="add-ingredient" class="btn btn-secondary">Add Ingredient</button>
-                                </p>
-                                <p>
-                                    <strong>Steps: &nbsp;&nbsp;</strong>
-									<div id="steps"></div>
-									<button id="add-step" class="btn btn-secondary">Add Step</button>
-                                </p>
-							</form>
-                        </div>
-                    </div>
-                    <div class="modal-footer" id="modalButton">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cancel">
-                            Cancel
-                        </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="btn-change">
-                            Save
-                        </button>
-                    </div>
-                </div>
-            </div>
-    </main>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/components.js"></script>
-</body>
+									<p>
+										<strong>Name: </strong>
+										<span class="required">*</span><input type="text" class="form-control"
+											name="name" id="recipe-name"/>
+									</p>
+									<p>
+										<strong>Author: </strong>
+										<input type="text" class="form-control"
+											name="author" id="m-authorName" disabled />
+									</p>
+									<p>
+										<strong>Category: &nbsp;&nbsp;</strong>
+										<select name="category" id="m-category">
+											<option value="Entrees">Entrees</option>
+											<option value="Sides">Sides</option>
+											<option value="Desserts">Desserts</option>
+										</select>
+									</p>
+									<p class="prep_cook_time">
+										<strong>Prep Time: </strong>
+										<span class="required">*</span>
+										<div style="display:flex">
+											<div>
+												&nbsp;&nbsp;Hours:&nbsp;&nbsp;
+												<br>
+												&nbsp;&nbsp;Minutes:&nbsp;&nbsp;
+											</div>
+											<div class="time_options">
+												<select name="prep_time_hrs" class="time_hrs prep_time" id="prep_time_hrs">
+												<!--filled in index.js-->
+												</select>
+												<br>
+												<select name="prep_time_mins" class="time_mins prep_time" id="prep_time_mins">
+												<!--filled in index.js-->
+												</select>
+											</div>
+										</div>
+									</p>
+									<p class="prep_cook_time">
+										<strong>Cook Time: </strong>
+										<div style="display:flex">
+											<div>
+												&nbsp;&nbsp;Hours:&nbsp;&nbsp;
+												<br>
+												&nbsp;&nbsp;Minutes:&nbsp;&nbsp;
+											</div>
+											<div class="time_options">
+												<select name="cook_time_hrs" class="time_hrs cook_time" id="cook_time_hrs">
+												<!--filled in index.js-->
+												</select>
+												<br>
+												<select name="cook_time_mins" class="time_mins cook_time"id="cook_time_mins">
+												<!--filled in index.js-->
+												</select>
+											</div>
+										</div>
+									</p>
+									<p>
+										<strong>Total Time: </strong>
+										<input type="text" class="form-control"
+											name="total_time" id="m-total-time" value="0 hours, 0 minutes" disabled />
+									</p>
+									<p>
+										<strong>Servings: </strong>
+										<span class="required">*</span>
+										&nbsp;&nbsp;<select name="servings" id="servingSizes">
+											<!--filled in index.js-->
+										</select>
+									</p>
+									<p>
+										<strong>Image URL: &nbsp;&nbsp;</strong><input class="form-control" name="image" />
+									</p>
+									<p>
+										<strong>Ingredients: </strong>
+										<span class="required">*</span>
+										<div id="m-ingredients"></div>
+										<button id="add-ingredient" class="btn btn-secondary">Add Ingredient</button>
+									</p>
+									<p>
+										<strong>Steps: </strong>
+										<span class="required">*</span>
+										<div id="m-steps"></div>
+										<button id="add-step" class="btn btn-secondary">Add Step</button>
+									</p>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer" id="modalButton">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cancel">
+								Cancel
+							</button>
+							<button type="button" class="btn btn-primary" id="save-changes-btn">
+								Save
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
 </html>
 

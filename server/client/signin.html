@@ -1,11 +1,21 @@
 <!doctype html>
 <html lang="en">
-    <body>
+    <head>
+        <script src="./js/components.js"></script>
+		<script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="./js/signin.js"></script>
+	</head>
+	<body>
         <main>
             <div class="d-flex ms-3">
                 <div
-                    class="h-100 d-flex align-items-center justify-content-center"
-                >
+                    class="h-100 d-flex align-items-center justify-content-center signInUp">
+					<h2>Sign In</h2>
                     <form
                         class="position-absolute top-50 start-50 translate-middle card"
                     >
@@ -35,6 +45,7 @@
                         >
                             Sign In
                         </button>
+						<br><br>
                         <div>
                             Don't have an account?
                             <a href="/signup.html">Sign up here</a>
@@ -43,13 +54,5 @@
                 </div>
             </div>
         </main>
-        <script
-            src="https://code.jquery.com/jquery-3.7.1.js"
-            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-            crossorigin="anonymous"
-        ></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="./js/components.js"></script>
-        <script src="./js/signin.js"></script>
     </body>
 </html>

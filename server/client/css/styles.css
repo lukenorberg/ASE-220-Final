@@ -77,7 +77,7 @@ body {
   padding: 10px 10px 0 10px;
 }
 #btn-save {
-  background-color: darksalmon;
+  background-color: #fa8072;
   border: none;
   font-size: 18px;
 }
@@ -90,14 +90,18 @@ body {
   float: right;
 }
 .load-btn {
-  background-color: darksalmon;
+  background-color: #fa8072;
   color: white;
   border: none;
   font-size: 18px;
   padding: 10px 20px;
 }
 .load-btn:hover {
-  background-color: gainsboro;
+  background-color: #c8665b;
+  border: #c8665b;
+}
+.load-btn:active, #load-more:active, #btns a .update-btn:active{
+	background-color: #a05148;
 }
 .modal-footer .btn-primary {
   background-color: #008080;
@@ -107,14 +111,41 @@ body {
   color: #ffffff;
 }
 #navbarNavAltMarkup div a:hover {
-  color: #d3d3d3;
+  color: #cce7f3;
 }
 #navbarNavAltMarkup div a:focus {
-  color: #ababab;
+  color: #d3d3d3;
 }
 #navbarNavAltMarkup {
   display: flex;
   justify-content: flex-end;
+}
+.turqoise{
+	background-color: #008080;
+}
+#create-btn{
+	background-color: #3EB489;
+	border: #3EB489;
+}
+#create-btn:hover{
+	background-color: #31906d;
+	border: #31906d;
+}
+#create-btn:active, #editBtn{
+	background-color: #277357;
+	border: #277357;
+}
+.prep_cook_time{
+	margin-bottom: 0;
+}
+.required{
+	color: red;
+}
+.signInUp{
+	margin: 10px auto;
+}
+#btn-change:hover{
+	background-color: #005959;
 }
 
 /***************DETAIL PAGE STYLES***************/
@@ -146,7 +177,7 @@ h5 {
   margin-top: 20%;
 }
 a {
-  color: darksalmon;
+  color: #fa8072;
   text-decoration: none;
 }
 .centerText {
@@ -155,6 +186,30 @@ a {
 .centerContent {
   display: flex;
   justify-content: center;
+}
+#editBtn{
+	background-color: #3EB489;
+	border: #3EB489;
+	float: left;
+}
+#editBtn:hover{
+	background-color: #31906d;
+	border: #31906d;
+}
+#deleteBtn{
+	float: right;
+}
+.update-btn{
+	background-color: #fa8072;
+	border: #fa8072;
+	float: left;
+}
+.update-btn:hover{
+	background-color: #c8665b;
+	border: #c8665b;
+}
+#detailBtns{
+	clear: left;
 }
 
 @media (max-width: 600px) {

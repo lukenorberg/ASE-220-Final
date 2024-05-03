@@ -1,21 +1,21 @@
-$(document).ready(function() {
-    navBar();
-    meta("Sign out");
+var token = localStorage.getItem("token");
 
-    const token = localStorage.getItem("token");
+if (token){
+	document.getElementById('signout').addEventListener("click", function(e) {
+        e.preventDefault();
 
-    if (!token) {
-        location.href = "../";
-    }
-
-    localStorage.removeItem("token");
-    axios
-        .get("http://localhost:3000/api/auth/signout")
-        .then((res) => {
-            console.log("Signed out",);
-        })
-        .catch((err) => {
-            console.error("Error logging in:", error);
-        });
-});
-
+		meta("Sign out");
+		localStorage.removeItem("token");
+	
+		token = localStorage.getItem("token");
+		if (!token){
+			var el = document.getElementById('signout');
+			el.parentNode.removeChild(el);
+			alert("You have been signed out");
+			location.href = "../";
+		}
+		else{
+			alert("Error signing out");
+		}
+	})
+}
