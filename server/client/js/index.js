@@ -92,20 +92,7 @@ $(document).ready(function() {
     }
 
     offset = 0;
-    rpp = 9;
-    var selectedId = -1;
     currentFilter = "All";
-
-    var inputKeys = [
-        "name",
-        "category",
-        "author",
-        "cook_time",
-        "image",
-        "prep_time",
-        "servings",
-        "total_time",
-    ];
 
     // creates serving size options
     addServingSizes();
