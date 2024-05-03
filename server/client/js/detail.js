@@ -29,8 +29,10 @@ $(document).ready(function() {
             for (let i in recipe.steps) {
                 $("#steps").append(`<li>${recipe.steps[i]}</li>`);
             }
-            $("#prep_time").text(`${recipe.prep_time_hrs} hour(s), ${recipe.prep_time_mins} minutes`);
-            $("#cook_time").text(`${recipe.cook_time_hrs} hour(s), ${recipe.cook_time_mins} minutes`);
+            $("#prep_time").text(recipe.prep_time);
+            $("#cook_time").text(recipe.cook_time);
+			console.log(recipe.prep_time);
+			console.log(recipe.cook_time);
             if (response.data.isUser) {
                 $("#author").text("You are the author");
 

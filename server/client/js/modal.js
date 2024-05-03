@@ -138,10 +138,12 @@ $(document).on("click", "#editBtn", function() {
                 return false;
             }
         });
-        $("#prep_time_hrs").val(parseInt(recipe.prep_time_hrs));
+        
+		$("#prep_time_hrs").val(parseInt(recipe.prep_time_hrs));
         $("#prep_time_mins").selected = (recipe.prep_time_mins);
         $("#cook_time_hrs").val(recipe.cook_time_hrs);
         $("#cook_time_mins").val(recipe.cook_time_mins);
+		
 
         for (var key in recipe) {
             if (!Array.isArray(recipe[key])) {
@@ -176,10 +178,19 @@ $(document).on("click", "#save-changes-btn", function() {
     const name = $('#recipe-name').val();
     const author = $('#m-authorName').val();
     const category = $('#m-category').find("option:selected").text();
-    const prep_time_hrs = $('.time_hrs.prep_time').find("option:selected").text();
-    const prep_time_mins = $('.time_mins.prep_time').find("option:selected").text();
-    const cook_time_hrs = $('.time_hrs.cook_time').find("option:selected").text();
-    const cook_time_mins = $('.time_mins.cook_time').find("option:selected").text();
+	
+	const prep_time_hrs = $('#prep_time_hrs').find("option:selected").text();
+    const prep_time_mins = $('#prep_time_mins').find("option:selected").text();
+	let hours = "hours";
+	if (prep_time_hrs == 1) { hours = "hour"; }
+	const prep_time = prep_time_hrs + " " + hours + ", " + prep_time_mins + " minutes";
+	
+    const cook_time_hrs = $('#cook_time_hrs').find("option:selected").text();
+    const cook_time_mins = $('#cook_time_mins').find("option:selected").text();
+	hours = "hours";
+	if (cook_time_hrs == 1) { hours = "hour"; }
+	const cook_time = cook_time_hrs + " " + hours + ", " + cook_time_mins + " minutes";
+	
     const total_time = $('#m-total-time').val();
     const serving_sizes = $('#servingSizes').find("option:selected").text();
     const img_url = $('input[name="image"]').val();
@@ -213,7 +224,14 @@ $(document).on("click", "#save-changes-btn", function() {
             ingredients: [],
             steps: [],
         };
-
+		
+		recipe.prep_time = prep_time;
+		recipe.prep_time_hours = parseInt(prep_time_hrs);
+		recipe.prep_time_minutes = parseInt(prep_time_mins);
+		recipe.cook_time = cook_time;
+		recipe.cook_time_hours = parseInt(cook_time_hrs);
+		recipe.cook_time_minutes = parseInt(cook_time_mins);
+		
         for (let i = 0; i < $(".ingredient-input").length; i++) {
             recipe.ingredients.push($(".ingredient-input")[i].value);
         }
@@ -241,13 +259,12 @@ $(document).on("click", "#save-changes-btn", function() {
                 } else {
                     $("#name").text(name)
                     $("#category").text(category)
-                    $("#prep_time").text(`${prep_time_hrs} hour(s), ${prep_time_mins} minutes`);
-                    $("#cook_time").text(`${cook_time_hrs} hour(s), ${cook_time_mins} minutes`);
-                    $("#total_time").text(total_time);
+                    $("#prep_time").text(prep_time);
+                    $("#cook_time").text(cook_time);
                     $("#total_time").text(total_time);
                     $("#servings").text(serving_sizes);
-                    const steps = document.querySelectorAll(".step-input")
-                    const ingredients = document.querySelectorAll(".ingredient-input")
+                    const steps = document.querySelectorAll(".step-input");
+                    const ingredients = document.querySelectorAll(".ingredient-input");
 
                     for (let i in steps) {
                         if (steps[i].value) {
