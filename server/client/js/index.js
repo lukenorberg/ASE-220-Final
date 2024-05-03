@@ -49,6 +49,7 @@ function createCard(index, recipes) {
 function fillCardInfo(index, recipes) {
     var authorName = recipes[index].author;
 
+	token = localStorage.getItem("token");
     if (token) {
         const fullName = jwtDecode(token).fullName;
         if (fullName === authorName) {

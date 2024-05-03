@@ -139,10 +139,10 @@ $(document).on("click", "#editBtn", function() {
             }
         });
         
-		$("#prep_time_hrs").val(parseInt(recipe.prep_time_hrs));
-        $("#prep_time_mins").selected = (recipe.prep_time_mins);
-        $("#cook_time_hrs").val(recipe.cook_time_hrs);
-        $("#cook_time_mins").val(recipe.cook_time_mins);
+		$("#prep_time_hrs").val(recipe.prep_time_hours);
+        $("#prep_time_mins").val(recipe.prep_time_minutes);
+        $("#cook_time_hrs").val(recipe.cook_time_hours);
+        $("#cook_time_mins").val(recipe.cook_time_minutes);
 		
 
         for (var key in recipe) {
@@ -164,14 +164,34 @@ var inputKeys = [
     "name",
     "category",
     "author",
-    "cook_time_mins",
-    "cook_time_hrs",
+    "cook_time_minutes",
+    "cook_time_hours",
     "image",
-    "prep_time_mins",
-    "prep_time_hrs",
+    "prep_time_minutes",
+    "prep_time_hours",
     "servings",
     "total_time",
 ];
+
+var prep_time_hours;
+var prep_time_minutes;
+var cook_time_hours;
+var cook_time_minutes;
+
+function updateTime(){
+	if (prep_time_hours === null || prep_time_hours === undefined){
+		prep_time_hours = 0;
+	}
+	if (prep_time_minutes === null || prep_time_minutes === undefined){
+		prep_time_minutes = 0;
+	}
+	if (cook_time_hours === null || cook_time_hours === undefined){
+		cook_time_hours = 0;
+	}
+	if (cook_time_minutes === null || cook_time_minutes === undefined){
+		cook_time_minutes = 0;
+	}
+}
 
 // Save logic
 $(document).on("click", "#save-changes-btn", function() {
@@ -179,26 +199,30 @@ $(document).on("click", "#save-changes-btn", function() {
     const author = $('#m-authorName').val();
     const category = $('#m-category').find("option:selected").text();
 	
-	const prep_time_hrs = $('#prep_time_hrs').find("option:selected").text();
-    const prep_time_mins = $('#prep_time_mins').find("option:selected").text();
-	let hours = "hours";
-	if (prep_time_hrs == 1) { hours = "hour"; }
-	const prep_time = prep_time_hrs + " " + hours + ", " + prep_time_mins + " minutes";
+	prep_time_hours = parseInt($('#prep_time_hrs').find("option:selected").text());
+    prep_time_minutes = parseInt($('#prep_time_mins').find("option:selected").text());
 	
-    const cook_time_hrs = $('#cook_time_hrs').find("option:selected").text();
-    const cook_time_mins = $('#cook_time_mins').find("option:selected").text();
+	let hours = "hours";
+	if (prep_time_hours == 1) { hours = "hour"; }
+	const prep_time = prep_time_hours + " " + hours + ", " + prep_time_minutes + " minutes";
+	
+    cook_time_hours = parseInt($('#cook_time_hrs').find("option:selected").text());
+    cook_time_minutes = parseInt($('#cook_time_mins').find("option:selected").text());
+	
+	updateTime();
+	
 	hours = "hours";
-	if (cook_time_hrs == 1) { hours = "hour"; }
-	const cook_time = cook_time_hrs + " " + hours + ", " + cook_time_mins + " minutes";
+	if (cook_time_hours == 1) { hours = "hour"; }
+	const cook_time = cook_time_hours + " " + hours + ", " + cook_time_minutes + " minutes";
 	
     const total_time = $('#m-total-time').val();
-    const serving_sizes = $('#servingSizes').find("option:selected").text();
+    const serving_sizes = parseInt($('#servingSizes').find("option:selected").text());
     const img_url = $('input[name="image"]').val();
     const ingredient = $('#ingredient-1').val();
     const step = $('#step-1').val();
 
     const invalid_name = (name === "" || name === undefined);
-    const invalid_prep_time = ((prep_time_hrs == 0 && prep_time_mins == 0) || prep_time_hrs === undefined || prep_time_mins === undefined);
+    const invalid_prep_time = ((prep_time_hours == 0 && prep_time_minutes == 0) || prep_time_hours === undefined || prep_time_minutes === undefined);
     const invalid_serving_sizes = (serving_sizes == 0 || serving_sizes === undefined);
     const invalid_ingredient = (ingredient === "" || ingredient === undefined);
     const invalid_step = (step === "" || step === undefined);
@@ -226,11 +250,7 @@ $(document).on("click", "#save-changes-btn", function() {
         };
 		
 		recipe.prep_time = prep_time;
-		recipe.prep_time_hours = parseInt(prep_time_hrs);
-		recipe.prep_time_minutes = parseInt(prep_time_mins);
 		recipe.cook_time = cook_time;
-		recipe.cook_time_hours = parseInt(cook_time_hrs);
-		recipe.cook_time_minutes = parseInt(cook_time_mins);
 		
         for (let i = 0; i < $(".ingredient-input").length; i++) {
             recipe.ingredients.push($(".ingredient-input")[i].value);
@@ -239,7 +259,7 @@ $(document).on("click", "#save-changes-btn", function() {
             recipe.steps.push($(".step-input")[i].value);
         }
         for (let i in inputKeys) {
-            recipe[inputKeys[i]] = $(`[name=${inputKeys[i]}]`)[0].value;
+            recipe[inputKeys[i]] = $(`[name=${inputKeys[i]}][0]`).val();
         }
 
         const token = localStorage.getItem("token")
@@ -276,7 +296,6 @@ $(document).on("click", "#save-changes-btn", function() {
 
                     for (let i in ingredients) {
                         if (ingredients[i].value) {
-                            console.log(ingredients[i].value)
                             $("#ingredients").append(`<li>${ingredients[i].value}</li>`);
                         }
                     }
@@ -286,6 +305,8 @@ $(document).on("click", "#save-changes-btn", function() {
             },
             error: function(errMsg) {
                 alert(errMsg);
+				console.log(errMsg);
+				console.log(errMsg.data);
             },
         });
         $("#modal-update").modal("hide");
