@@ -9,7 +9,7 @@ var offset;
 var rpp;
 var apiUrl = "http://localhost:3000/api/recipes";
 
-export function displayCards(contentCleared = false) {
+function displayCards(contentCleared = false) {
     $.get(apiUrl, function(data) {
         fullRecipes = data.data;
         recipes = fullRecipes;

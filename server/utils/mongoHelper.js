@@ -16,7 +16,7 @@ function validRecipeFields(recipe) {
             return false;
         }
     }
-    const validCategories = ["Entrees", "Desserts", "Appetizers"];
+    const validCategories = ["Entrees", "Desserts", "Sides"];
     if (!validCategories.includes(recipe["category"])) {
         return false;
     }

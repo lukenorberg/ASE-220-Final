@@ -237,7 +237,7 @@ $(document).on("click", "#save-changes-btn", function() {
             success: function() {
                 if (action === "create") {
                     clearForm();
-                    displayCards(true)
+                    location.reload();
                 } else {
                     $("#name").text(name)
                     $("#category").text(category)
