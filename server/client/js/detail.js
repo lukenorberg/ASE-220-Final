@@ -31,8 +31,7 @@ $(document).ready(function() {
             }
             $("#prep_time").text(recipe.prep_time);
             $("#cook_time").text(recipe.cook_time);
-			console.log(recipe.prep_time);
-			console.log(recipe.cook_time);
+
             if (response.data.isUser) {
                 $("#author").text("You are the author");
 
