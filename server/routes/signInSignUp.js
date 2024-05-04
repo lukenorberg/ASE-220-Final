@@ -30,7 +30,6 @@ app.post("/auth/signin", async (req, res) => {
 });
 
 app.post("/auth/signup", async (req, res) => {
-    console.log(req.body)
     const { code, success, data } = await createUser(req.body);
     res.status(code).json({
         success,

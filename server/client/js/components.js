@@ -16,25 +16,25 @@ function navBar() {
             </div>
         </nav>
     `
-	$('body').prepend(navHTML);
+    $('body').prepend(navHTML);
 }
 
 
-function addSignoutButton(){
-	const token = localStorage.getItem("token");
-	var el = document.getElementById('signout');
-	if (token){
-		const signout = `<a class="nav-link" href="/" id="signout">Sign out</a>`;
-		$(".navbar-nav").append(signout);
-		$('body').append(`<script src="./js/signout.js"></script>`);
-		
-		const signin = document.getElementById('signinBtn');
-		const signup = document.getElementById('signupBtn');
-		signin.parentNode.removeChild(signin);
-		signup.parentNode.removeChild(signup);
-	} else if(!token && el){
-		el.parentNode.removeChild(el);
-	}
+function addSignoutButton() {
+    const token = localStorage.getItem("token");
+    var el = document.getElementById('signout');
+    if (token) {
+        const signout = `<a class="nav-link" href="/" id="signout">Sign out</a>`;
+        $(".navbar-nav").append(signout);
+        $('body').append(`<script src="./js/signout.js"></script>`);
+
+        const signin = document.getElementById('signinBtn');
+        const signup = document.getElementById('signupBtn');
+        signin.parentNode.removeChild(signin);
+        signup.parentNode.removeChild(signup);
+    } else if (!token && el) {
+        el.parentNode.removeChild(el);
+    }
 }
 
 function meta(title) {
